@@ -7,21 +7,20 @@ function gacha() {
         { nama: "Alok epep", chance: 30 }       // Paling mudah (30%)
     ];
 
-    let jumlahGacha = parseInt(document.getElementById("gacha-count").value);
-    let hasilGacha = "";
+    let random = Math.random() * 100;
+    let cumulative = 0;
+    let hasil = "";
 
-    for (let j = 0; j < jumlahGacha; j++) {
-        let random = Math.random() * 100;
-        let cumulative = 0;
-
-        for (let i = 0; i < hadiah.length; i++) {
-            cumulative += hadiah[i].chance;
-            if (random < cumulative) {
-                hasilGacha += `🎁 ${j + 1}. Kamu mendapatkan: ${hadiah[i].nama}<br>`;
-                break;
-            }
+    for (let i = 0; i < hadiah.length; i++) {
+        cumulative += hadiah[i].chance;
+        if (random < cumulative) {
+            hasil = `🎁 Kamu mendapatkan: ${hadiah[i].nama}`;
+            break;
         }
     }
 
-    document.getElementById("gacha-result").innerHTML = hasilGacha;
+    let hasilGacha = document.getElementById("gacha-result");
+    let p = document.createElement("p");
+    p.innerHTML = hasil;
+    hasilGacha.appendChild(p);
 }
