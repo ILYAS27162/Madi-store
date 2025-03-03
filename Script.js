@@ -1,3 +1,7 @@
+document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("gacha-button").addEventListener("click", gacha);
+});
+
 function gacha() {
     let hadiah = [
         { nama: "Ilyas jago epep", chance: 5 },   // Paling langka (5%)
